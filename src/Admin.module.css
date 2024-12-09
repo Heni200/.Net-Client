@@ -8,6 +8,11 @@
     width: 100%;
     height: 100%;
   }
+
+  .supplierImgAdmin {
+    width: 100%;
+    height: 100%;
+  }
   
   .editBtn {
     font-size: 26px !important;
@@ -29,12 +34,21 @@
     border-top: 1px solid black;
   }
 
+  .adminSuppliersTableTd{
+    border-top: 1px solid black;
+  }
+
   .adminProductsTableTdPadding{
     padding-left: 10px;
     padding-right: 10px;
   }
 
   .adminCategoriesTableTdPadding{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .adminSuppliersTableTdPadding{
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -53,6 +67,10 @@
   }
 
   .adminCategoriesTableThLeft{
+    text-align: left;
+  }
+
+  .adminSuppliersTableThLeft{
     text-align: left;
   }
 

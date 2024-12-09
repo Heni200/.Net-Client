@@ -8,6 +8,7 @@ import AdminProducts from "./AdminProducts";
 import AdminCategories from "./AdminCategories";
 import AdminPromoCodes from "./AdminPromoCodes";
 import { Typography } from "@mui/material";
+import AdminSuppliers from "./AdminSuppliers";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -68,6 +69,8 @@ const AdminMain = () => {
             <Tab label="Products" {...a11yProps(1)} />
             <Tab label="Categories" {...a11yProps(2)} />
             <Tab label="Promo Codes" {...a11yProps(3)} />
+            <Tab label="Suppliers" {...a11yProps(4)} />
+
           </Tabs>
         </Box>
         <CustomTabPanel value={tabIndexValue} index={0}>
@@ -81,6 +84,9 @@ const AdminMain = () => {
         </CustomTabPanel>
         <CustomTabPanel value={tabIndexValue} index={3}>
           <AdminPromoCodes />
+        </CustomTabPanel>
+        <CustomTabPanel value={tabIndexValue} index={4}>
+          <AdminSuppliers />
         </CustomTabPanel>
       </Box>
     </>

@@ -30,6 +30,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { ProfileMenuGoTo } from "../../models/profileMenuGoToEnum";
 import BuildIcon from "@mui/icons-material/Build";
 import ProfileMenuLayout from "./LayoutProfileMenu";
+import Logo from "./../../img/home_logo.png";
 
 const drawerWidth = 240;
 
@@ -227,7 +228,7 @@ export default function Layout({ children, ...props }: any) {
             <MenuIcon />
           </IconButton>{" "}
           <Box sx={{ cursor: "pointer" }} onClick={() => naviageToMainPage()}>
-            React Shop
+            Hello Shop
           </Box>
           <Typography variant="h6" noWrap component="div">
             <Search>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { Product } from "../models/product";
 import { Category } from "../models/category";
 import { ChangePassword } from "../models/changePassword";
+import {Supplier } from "../models/supplier";
 
 const pageSize = 12;
 
@@ -60,6 +61,28 @@ export const categoryApi = () => {
     getById: (id: number) => axios.get(url + "details/?id=" + id),
     create: (newRecord: Category) => axios.post(url + "create", newRecord),
     update: (updateRecord: Category) => axios.put(url + "edit", updateRecord),
+    delete: (id: number) => axios.delete(url + "delete/?id=" + id),
+  };
+};
+
+export const supplierApi = () => {
+  let url = process.env.REACT_APP_API_URL + "supplier/";
+  let token = localStorage.getItem("token");
+  if (token != null) {
+    axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+  }
+
+  return {
+    getAll: (pageIndex?: number, pageSizePar?: number, searchText?: string) =>
+      axios.get(
+        url +
+          `getall?${pageSizePar ? "pageSize=" + pageSizePar : ""}${
+            pageIndex ? "&pageIndex=" + pageIndex : ""
+          }&searchText=${searchText ? searchText : ""}`
+      ),
+    getById: (id: number) => axios.get(url + "details/?id=" + id),
+    create: (newRecord: Supplier) => axios.post(url + "create", newRecord),
+    update: (updateRecord: Supplier) => axios.put(url + "edit", updateRecord),
     delete: (id: number) => axios.delete(url + "delete/?id=" + id),
   };
 };

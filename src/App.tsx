@@ -21,6 +21,7 @@ import ChangePasswordSuccess from "./pages/authentication/ChangePasswordSuccessP
 import { lazy, Suspense } from "react";
 import AdminAddEditProduct from "./pages/admin/AdminAddEditProductPage";
 import AdminAddEditCategory from "./pages/admin/AdminAddEditCategoryPage";
+import AdminAddEditSupplier from "./pages/admin/AdminAddEditSupplierPage";
 
 function App() {
   const auth = useSelector((state: RootState) => state.auth);
@@ -35,6 +36,29 @@ function App() {
             <LayoutProductDetails>
               {auth.isAuthenticated && auth.user?.userRole === "Admin" && (
                 <AdminAddEditProduct />
+              )}
+
+              {(!auth.isAuthenticated ||
+                (auth.isAuthenticated && auth.user?.userRole !== "Admin")) && (
+                <Login />
+              )}
+            </LayoutProductDetails>
+          </Suspense>
+        }
+      />
+    );
+  }
+
+  
+  function getAdminAddEditSupplierRoute(withId?: boolean) {
+    return (
+      <Route
+        path={withId ? "/admin/addsupplier/:id" : "/admin/addsupplier"}
+        element={
+          <Suspense fallback={<div>Loading…</div>}>
+            <LayoutProductDetails>
+              {auth.isAuthenticated && auth.user?.userRole === "Admin" && (
+                <AdminAddEditSupplier />
               )}
 
               {(!auth.isAuthenticated ||
@@ -69,6 +93,8 @@ function App() {
       />
     );
   }
+
+  
 
   return (
     <>
@@ -195,6 +221,8 @@ function App() {
           {getAdminAddEditProductRoute()}
           {getAdminAddEditCategoryRoute(true)}
           {getAdminAddEditCategoryRoute()}
+          {getAdminAddEditSupplierRoute(true)}
+          {getAdminAddEditSupplierRoute()}
           <Route
             path="*"
             element={
